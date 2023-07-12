@@ -124,6 +124,14 @@ case 1:{
 	break;
 }
 	
+case 2: {
+        int farbe;
+        std::cout << "Auf welche Farbe möchtest du setzen (1 = Rot, 2 = Schwarz)? ";
+        std::cin >> farbe;
+        spiel = new FarbeSpiel(farbe);
+        break;
+}
+	
 case 3:{
 	int geradeUngerade;
    	std::cout << "Möchtest du auf Gerade (1) oder Ungerade (2) setzen? ";

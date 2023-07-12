@@ -155,6 +155,30 @@ case 5:{
         spiel = new DrittelSpiel(drittel);
         break;
 }
+
+gewonnen = spiel->gewonnen(gewinnzahl);
+delete spiel;
+
+ 	if (gewonnen && (spielmodus == 2 || spielmodus == 3 || spielmodus == 4)) {
+		guthaben += (einsatz * 2) - einsatz;
+		std::cout << "Glückwunsch! Du hast gewonnen." << std::endl;
+	}
+
+        else if (gewonnen && spielmodus == 1) {
+		guthaben += (einsatz/anzahl * 36) - einsatz;
+		std::cout << "Glückwunsch! Du hast gewonnen." << std::endl;
+        }
+
+        else if (gewonnen && spielmodus == 5) {
+		guthaben += (einsatz * 3) - einsatz;
+		std::cout << "Glückwunsch! Du hast gewonnen." << std::endl;
+        }
+
+        else {
+		guthaben -= einsatz;
+		std::cout << "Du hast verloren." << std::endl;
+	}
+
 	
 
 	return 0;

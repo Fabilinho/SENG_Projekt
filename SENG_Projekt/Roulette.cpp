@@ -71,6 +71,25 @@ public:
     }
 };
 
+class DrittelSpiel : public RouletteSpiel {
+private:
+    int drittel;
+
+public:
+    DrittelSpiel(int dt) : drittel(dt) {}
+
+    bool gewonnen(int gewinnzahl) override {
+        if (drittel == 1)
+            return (gewinnzahl >= 1 && gewinnzahl <= 12);
+        else if (drittel == 2)
+            return (gewinnzahl >= 13 && gewinnzahl <= 24);
+        else if (drittel == 3)
+            return (gewinnzahl >= 25 && gewinnzahl <= 36);
+        else
+            return false;
+    }
+};
+
 int main() {
 
 

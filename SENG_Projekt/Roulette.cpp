@@ -105,26 +105,47 @@ std::srand(static_cast<unsigned int>(std::time(nullptr)));
 int gewinnzahl = std::rand() % 37;
 
 switch (spielmodus) {
-case 3: {
+case 1:{
+
+        std::cout << "Auf wie viele verschiedene Zahlen möchtest du setzen? ";
+	std::cin >> anzahl;
+	std::vector<int> zahlen;
+	for (int i = 0; i < anzahl; ++i) {
+		int zahl;
+		std::cout << "Gib die " << i + 1 << ". Zahl ein: ";
+		std::cin >> zahl;
+		while(zahl > 36){
+			std::cout << "Eingabe zu hoch! Erneut eingeben!" << std::endl;
+			std::cin >> zahl;
+		}
+		zahlen.push_back(zahl);
+        }
+	spiel = new ZahlSpiel(zahlen);
+	break;
+}
+	
+case 3:{
 	int geradeUngerade;
    	std::cout << "Möchtest du auf Gerade (1) oder Ungerade (2) setzen? ";
         std::cin >> geradeUngerade;
         spiel = new GeradeUngeradeSpiel(geradeUngerade);
         break;
-        }
+}
 
 
 	
-case 5: {
+case 5:{
 	int drittel;
         std::cout << "Auf welches Drittel möchtest du setzen (1 = 1-12, 2 = 13-24, 3 = 25-36)? ";
         std::cin >> drittel;
         spiel = new DrittelSpiel(drittel);
         break;
-        }
+}
 	
 
 	return 0;
 }
+
+
 
 

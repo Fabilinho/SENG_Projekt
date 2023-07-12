@@ -59,6 +59,18 @@ public:
     }
 };
 
+class BereichSpiel : public RouletteSpiel {
+private:
+    int bereich;
+
+public:
+    BereichSpiel(int b) : bereich(b) {}
+
+    bool gewonnen(int gewinnzahl) override {
+        return ((bereich == 1 && gewinnzahl >= 1 && gewinnzahl <= 18) || (bereich == 2 && gewinnzahl >= 19 && gewinnzahl <= 36));
+    }
+};
+
 int main() {
 
 

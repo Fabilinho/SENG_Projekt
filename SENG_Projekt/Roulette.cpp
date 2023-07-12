@@ -103,6 +103,15 @@ case 3: {
         break;
         }
 
+
+	
+case 5: {
+	int drittel;
+        std::cout << "Auf welches Drittel möchtest du setzen (1 = 1-12, 2 = 13-24, 3 = 25-36)? ";
+        std::cin >> drittel;
+        spiel = new DrittelSpiel(drittel);
+        break;
+        }
 	
 
 	return 0;

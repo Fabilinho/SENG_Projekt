@@ -93,6 +93,14 @@ public:
 int main() {
 
 
+std::cout << "Welchen Spielmodus möchtest du spielen?" << std::endl;
+std::cout << "1. Eine oder mehrere Zahl setzen" << std::endl;
+std::cout << "2. Auf Rot oder Schwarz setzen" << std::endl;
+std::cout << "3. Auf Gerade oder Ungerade setzen" << std::endl;
+std::cout << "4. Auf 1-18 oder 19-36 setzen" << std::endl;
+std::cout << "5. Auf 1-12, 13-24 oder 25-36" << std::endl;
+std::cout << "Wähle eine Option (1-5): ";
+
 
 switch (spielmodus) {
 case 3: {

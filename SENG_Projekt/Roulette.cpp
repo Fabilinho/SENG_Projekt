@@ -140,7 +140,13 @@ case 3:{
         break;
 }
 
-
+case 4: {
+        int bereich;
+        std::cout << "Möchtest du auf 1-18 (1) oder 19-36 (2) setzen? ";
+        std::cin >> bereich;
+        spiel = new BereichSpiel(bereich);
+        break;
+}
 	
 case 5:{
 	int drittel;

@@ -74,6 +74,18 @@ public:
 int main() {
 
 
+
+switch (spielmodus) {
+case 3: {
+	int geradeUngerade;
+   	std::cout << "Möchtest du auf Gerade (1) oder Ungerade (2) setzen? ";
+        std::cin >> geradeUngerade;
+        spiel = new GeradeUngeradeSpiel(geradeUngerade);
+        break;
+        }
+
+	
+
 	return 0;
 }
 

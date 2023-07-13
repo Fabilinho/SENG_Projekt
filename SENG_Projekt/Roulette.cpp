@@ -107,7 +107,8 @@ if (guthaben <= 0) {
 	else{
 	std::cout << "Das wars! Und Tschüss!" << std::endl;
 	break;
-	}}
+	}
+}
 
 std::cout << "Welchen Spielmodus möchtest du spielen?" << std::endl;
 std::cout << "1. Eine oder mehrere Zahl setzen" << std::endl;
@@ -117,8 +118,16 @@ std::cout << "4. Auf 1-18 oder 19-36 setzen" << std::endl;
 std::cout << "5. Auf 1-12, 13-24 oder 25-36" << std::endl;
 std::cout << "Wähle eine Option (1-5): ";
 
+int spielmodus;
+std::cin >> spielmodus; //Auswahl Spielmodus
+
+int einsatz;
+std::cout << "Wie viel möchtest du setzen? ";
+std::cin >> einsatz; //Auswahl Einsatz
+
 std::srand(static_cast<unsigned int>(std::time(nullptr)));
 int gewinnzahl = std::rand() % 37;
+
 
 switch (spielmodus) {
 case 1:{

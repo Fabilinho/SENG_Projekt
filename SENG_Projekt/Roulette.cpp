@@ -133,6 +133,10 @@ while(guthaben < einsatz){
 std::srand(static_cast<unsigned int>(std::time(nullptr)));
 int gewinnzahl = std::rand() % 37;
 
+bool gewonnen = false;
+RouletteSpiel* spiel = nullptr;
+
+int anzahl;
 
 switch (spielmodus) {
 case 1:{
@@ -184,6 +188,11 @@ case 5:{
         std::cin >> drittel;
         spiel = new DrittelSpiel(drittel);
         break;
+}
+default:
+        std::cout << "Ungültige Option ausgewählt." << std::endl;
+        continue;
+}
 }
 
 gewonnen = spiel->gewonnen(gewinnzahl);

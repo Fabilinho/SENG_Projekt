@@ -95,6 +95,19 @@ int guthaben =5000;
 
 while (true) {
 std::cout << "Aktuelles Guthaben: " << guthaben << std::endl;
+if (guthaben <= 0) {
+	std::cout << "Du hast kein Guthaben mehr. Das Spiel ist vorbei außer du gibst das Zauberwort ein." << std::endl;
+	char zauberwort[15] = "Simsalabim";
+	char eingabe[15];
+	std::cin >> eingabe;
+	if(strcmp(zauberwort, eingabe) == 0){
+	std::cout << "Weiter gehts!!" << std::endl;
+	guthaben = 5000;
+	}
+	else{
+	std::cout << "Das wars! Und Tschüss!" << std::endl;
+	break;
+	}}
 
 std::cout << "Welchen Spielmodus möchtest du spielen?" << std::endl;
 std::cout << "1. Eine oder mehrere Zahl setzen" << std::endl;

@@ -11,12 +11,14 @@
 #include <vector>
 #include <string.h>
 
+//Klasse des Hauptspiels
 class RouletteSpiel {
 public:
     virtual bool gewonnen(int gewinnzahl) = 0;
     virtual ~RouletteSpiel() {}
 };
 
+//Klasse für den Spielmodus um auf eine oder mehrer Zahlen zu setzen
 class ZahlSpiel : public RouletteSpiel {
 private:
     std::vector<int> zahlen;
@@ -35,6 +37,7 @@ public:
     }
 };
 
+//Spielmodus um auf rot oder schwarz zu setzen
 class FarbeSpiel : public RouletteSpiel {
 private:
     int farbe;
@@ -47,6 +50,7 @@ public:
     }
 };
 
+//Spielmodus um auf gerade oder ungerade Zahlen zu setzen
 class GeradeUngeradeSpiel : public RouletteSpiel {
 private:
     int geradeUngerade;
@@ -59,6 +63,7 @@ public:
     }
 };
 
+//Spielmodus um auf die 1. oder 2. Hälfte zu setzen (1-18, 19-36)
 class BereichSpiel : public RouletteSpiel {
 private:
     int bereich;
@@ -71,6 +76,7 @@ public:
     }
 };
 
+//Spielmodus um auf das 1./2./3. Drittel zu setzen (1-12, 13-24, 25-36)
 class DrittelSpiel : public RouletteSpiel {
 private:
     int drittel;
@@ -91,10 +97,13 @@ public:
 };
 
 int main() {
-	int guthaben =5000;
+	int guthaben =5000;//Startguthaben
 
+	//Loop
 	while (true) {
 		std::cout << "Aktuelles Guthaben: " << guthaben << std::endl;
+
+		//Abfrage ob kein Guthaben mehr vorhanden
 		if (guthaben <= 0) {
 			std::cout << "Du hast kein Guthaben mehr. Das Spiel ist vorbei außer du gibst das Zauberwort ein." << std::endl;
 			char zauberwort[15] = "Simsalabim";
@@ -109,7 +118,7 @@ int main() {
 			break;
 		}
 	
-
+		//Interaktion mit Benutzer
 		std::cout << "Welchen Spielmodus möchtest du spielen?" << std::endl;
 		std::cout << "1. Eine oder mehrere Zahl setzen" << std::endl;
 		std::cout << "2. Auf Rot oder Schwarz setzen" << std::endl;
@@ -118,18 +127,20 @@ int main() {
 		std::cout << "5. Auf 1-12, 13-24 oder 25-36" << std::endl;
 		std::cout << "Wähle eine Option (1-5): ";
 		
-		int spielmodus;
+		int spielmodus;//Auswahl Spielmodus
 		std::cin >> spielmodus; //Auswahl Spielmodus
 
 		int einsatz;
 		std::cout << "Wie viel möchtest du setzen? ";
 		std::cin >> einsatz; //Auswahl Einsatz
 
+		//Abfrage ob Einsatz größer als Guthaben. Im Fehlerfall erneute Eingabe	
 		while(guthaben < einsatz){
         		std::cout << "So viel Guthaben besitzen Sie nicht. Geben Sie ein geringeren Einsatz ein!" << std::endl;
 			std::cin >> einsatz;
 		}
 
+		//Generiere eine zufällige Zahl zwischen 0 und 36
 		std::srand(static_cast<unsigned int>(std::time(nullptr)));
 		int gewinnzahl = std::rand() % 37;
 
@@ -138,6 +149,7 @@ int main() {
 
 		int anzahl;
 
+		//Switch Case für verscheidene Spielmodi
 		switch (spielmodus) {
 			case 1: {
 			        std::cout << "Auf wie viele verschiedene Zahlen möchtest du setzen? ";
@@ -198,6 +210,7 @@ int main() {
 		gewonnen = spiel->gewonnen(gewinnzahl);
 		delete spiel;
 
+		//Gewinnverteilung berechnen
 	 	if (gewonnen && (spielmodus == 2 || spielmodus == 3 || spielmodus == 4)) {
 			guthaben += (einsatz * 2) - einsatz;
 			std::cout << "Glückwunsch! Du hast gewonnen." << std::endl;
@@ -218,6 +231,7 @@ int main() {
 			std::cout << "Du hast verloren." << std::endl;
 		}
 
+		//Ausgabe Gewinnzahl + Farbe
 		if(gewinnzahl % 2 == 1) {
 	        	std::cout << "Die Gewinnzahl lautet: +++++++ " << gewinnzahl << " schwarz +++++++" << std::endl;
 	        }
@@ -226,13 +240,15 @@ int main() {
 	        	std::cout << "Die Gewinnzahl lautet: +++++++ " << gewinnzahl << " rot +++++++" << std::endl;
 	        }
 
+		//Ausgabe aktualisiertes Guthaben
 		std::cout << "Aktualisiertes Guthaben: " << guthaben << std::endl;
 
+		//Erneutes spielen?
 		std::cout << "Möchtest du nochmal spielen? (1 = Ja, 0 = Nein) ";
 	        int nochmal;
 	        std::cin >> nochmal;
 
-        
+        	//Bei Nein While-schleife abgebrochen
         	if (nochmal != 1) {
             		break;
         	}

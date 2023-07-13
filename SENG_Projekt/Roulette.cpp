@@ -91,7 +91,10 @@ public:
 };
 
 int main() {
+int guthaben =5000;
 
+while (true) {
+std::cout << "Aktuelles Guthaben: " << guthaben << std::endl;
 
 std::cout << "Welchen Spielmodus möchtest du spielen?" << std::endl;
 std::cout << "1. Eine oder mehrere Zahl setzen" << std::endl;

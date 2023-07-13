@@ -125,6 +125,11 @@ int einsatz;
 std::cout << "Wie viel möchtest du setzen? ";
 std::cin >> einsatz; //Auswahl Einsatz
 
+while(guthaben < einsatz){
+        std::cout << "So viel Guthaben besitzen Sie nicht. Geben Sie ein geringeren Einsatz ein!" << std::endl;
+	std::cin >> einsatz;
+}
+
 std::srand(static_cast<unsigned int>(std::time(nullptr)));
 int gewinnzahl = std::rand() % 37;
 

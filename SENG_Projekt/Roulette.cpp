@@ -225,7 +225,17 @@ delete spiel;
         	std::cout << "Die Gewinnzahl lautet: +++++++ " << gewinnzahl << " rot +++++++" << std::endl;
         }
 
+	std::cout << "Aktualisiertes Guthaben: " << guthaben << std::endl;
 
+	std::cout << "Möchtest du nochmal spielen? (1 = Ja, 0 = Nein) ";
+        int nochmal;
+        std::cin >> nochmal;
+
+        
+        if (nochmal != 1) {
+            break;
+        }
+    }
 	return 0;
 }
 

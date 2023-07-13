@@ -218,7 +218,13 @@ delete spiel;
 		std::cout << "Du hast verloren." << std::endl;
 	}
 
-	
+	if(gewinnzahl % 2 == 1){
+        	std::cout << "Die Gewinnzahl lautet: +++++++ " << gewinnzahl << " schwarz +++++++" << std::endl;
+        }
+        else{
+        	std::cout << "Die Gewinnzahl lautet: +++++++ " << gewinnzahl << " rot +++++++" << std::endl;
+        }
+
 
 	return 0;
 }
